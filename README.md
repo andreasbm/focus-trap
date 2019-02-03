@@ -2,7 +2,7 @@
 
 ## What is this?
 
-A lightweight Web Component that can trap focus. Great for making accessible components such as dropdowns or dialogs.
+A lightweight Web Component that can trap focus. Great for making accessible components such as dropdowns or dialogs. Check out the demo at [https://appnest-demo.firebaseapp.com/focus-trap/](https://appnest-demo.firebaseapp.com/focus-trap/).
 
 **Features**
 
