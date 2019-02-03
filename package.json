@@ -1,0 +1,17 @@
+{
+	"name": "focus-trap",
+	"version": "0.0.1",
+	"scripts": {
+		"ncu": "ncu -u -a && npm update && npm install",
+		"test": "karma start",
+		"b:dev": "rollup -c --environment NODE_ENV:dev",
+		"b:prod": "rollup -c --environment NODE_ENV:prod",
+		"s:dev": "rollup -c --watch --environment NODE_ENV:dev",
+		"s:prod": "rollup -c --watch --environment NODE_ENV:prod",
+		"s": "npm run s:dev",
+		"start": "npm run s"
+	},
+	"devDependencies": {
+		"@appnest/web-config": "0.3.4"
+	}
+}
