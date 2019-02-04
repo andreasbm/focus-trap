@@ -1,26 +1,15 @@
-/**
- * A query targeted at all focusable elements.
- * @type {string}
- */
-export const FOCUSABLE_QUERY = [
-	`[href]`,
-	`[tabindex]:not([tabindex="-1"])`,
-	`button:not([disabled])`,
-	`input:not([disabled])`,
-	`textarea:not([disabled])`,
-	`select:not([disabled])`
-].join(",");
+import { isFocusable } from "./focusable";
 
 /**
  * Traverses the slots of the open shadowroots and returns all children matching the query.
  * @param {ShadowRoot | HTMLElement} root
- * @param {string} query
+ * @param isMatch
  * @param {number} maxDepth
  * @param {number} depth
  * @returns {HTMLElement[]}
  */
 export function queryShadowRoot (root: ShadowRoot | HTMLElement,
-                                 query: string,
+                                 isMatch: (($elem: HTMLElement) => boolean) = isFocusable,
                                  maxDepth: number = 20,
                                  depth: number = 0): HTMLElement[] {
 	let matches: HTMLElement[] = [];
@@ -31,31 +20,29 @@ export function queryShadowRoot (root: ShadowRoot | HTMLElement,
 	}
 
 	// Traverses a slot element
-	const traverseSlot = ($slot: HTMLSlotElement, query: string) => {
+	const traverseSlot = ($slot: HTMLSlotElement) => {
 		const assignedNodes = $slot.assignedNodes();
 		if (assignedNodes.length > 0) {
-			return queryShadowRoot(assignedNodes[0].parentElement!, query, maxDepth, depth + 1);
+			return queryShadowRoot(assignedNodes[0].parentElement!, isMatch, maxDepth, depth + 1);
 		}
 
 		return [];
 	};
 
 	// Go through each child and continue the traversing if necessary
-	const children = Array.from(root.childNodes); // Array.from(root.querySelectorAll("> *"));
-	for (const $elem of children) {
-		if ($elem != null && $elem instanceof HTMLElement) {
-			if ($elem.shadowRoot != null) {
-				matches.push(...queryShadowRoot($elem.shadowRoot, query, maxDepth, depth + 1));
+	const children = <HTMLElement[]>Array.from(root.children);
+	for (const $child of children) {
+		if ($child.shadowRoot != null) {
+			matches.push(...queryShadowRoot($child.shadowRoot, isMatch, maxDepth, depth + 1));
 
-			} else if ($elem.tagName === "SLOT") {
-				matches.push(...traverseSlot(<HTMLSlotElement>$elem, query));
+		} else if ($child.tagName === "SLOT") {
+			matches.push(...traverseSlot(<HTMLSlotElement>$child));
 
-			} else if ($elem.matches(query)) {
-				matches.push($elem);
+		} else if (isMatch($child)) {
+			matches.push($child);
 
-			} else {
-				matches.push(...queryShadowRoot($elem, query, maxDepth, depth + 1));
-			}
+		} else {
+			matches.push(...queryShadowRoot($child, isMatch, maxDepth, depth + 1));
 		}
 	}
 

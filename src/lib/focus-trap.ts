@@ -1,5 +1,5 @@
 import { debounce } from "./debounce";
-import { FOCUSABLE_QUERY, queryShadowRoot } from "./shadow";
+import { queryShadowRoot } from "./shadow";
 
 const template = document.createElement("template");
 template.innerHTML = `
@@ -114,7 +114,8 @@ export class FocusTrap extends HTMLElement implements IFocusTrap {
 	 * Returns a list of the focusable children found within the element.
 	 */
 	getFocusableChildren (): HTMLElement[] {
-		return queryShadowRoot(this, FOCUSABLE_QUERY);
+		return queryShadowRoot(this);
+		// return queryShadowRoot(this, FOCUSABLE_QUERY);
 	}
 
 	/**

@@ -98,6 +98,7 @@ describe("shadow", () => {
 	});
 
 	it("[shadow] - should traverse nested shadow roots and find all focusable children", async () => {
+		// console.log($root.$focusTrap.getFocusableChildren());
 		expect($root.$focusTrap.getFocusableChildren().length).to.be.equal((ELEMENT_WITH_FOCUSABLE_CHILDREN_COUNT * FOCUSABLE_CHILDREN_PER_ELEMENT_WITH_FOCUSABLE_CHILDREN) + FOCUSABLE_LEAF_NODE_COUNT);
 	});
 });
