@@ -52,13 +52,13 @@ interface IFocusTrap {
 }
 ```
 
-#### `readonly hasFocus: boolean;`
-
-Returns whether the focus trap currently has focus.
-
 #### `inactive: boolean;`
 
 Returns whether or not the focus trap is inactive.
+
+#### `readonly hasFocus: boolean;`
+
+Returns whether the focus trap currently has focus.
 
 #### `focusFirstElement: (() => void);`
 
