@@ -44,33 +44,22 @@ The `focus-trap` element implements the following interface.
 
 ```typescript
 interface IFocusTrap {
+  // Returns whether or not the focus trap is inactive.
   inactive: boolean;
+
+  // Returns whether the focus trap currently has focus.
   readonly hasFocus: boolean;
+
+  // Focuses the first focusable element in the focus trap.
   focusFirstElement: (() => void);
+
+  // Focuses the last focusable element in the focus trap.
   focusLastElement: (() => void);
+
+  // Returns a list of the focusable children found within the element.
   getFocusableChildren: (() => HTMLElement[]);
 }
 ```
-
-#### `inactive: boolean;`
-
-Returns whether or not the focus trap is inactive.
-
-#### `readonly hasFocus: boolean;`
-
-Returns whether the focus trap currently has focus.
-
-#### `focusFirstElement: (() => void);`
-
-Focuses the first focusable element in the focus trap.
-
-#### `focusLastElement: (() => void);`
-
-Focuses the last focusable element in the focus trap.
-
-#### `getFocusableChildren: (() => HTMLElement[]);`
-
-Returns a list of the focusable children found within the element.
 
 ## 🎉 License
 
