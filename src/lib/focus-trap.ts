@@ -22,14 +22,17 @@ export class FocusTrap extends HTMLElement {
 	}
 
 	set inactive (value: boolean) {
-		value ? this.setAttribute("inactive", "") : this.removeAttribute("value");
+		value ? this.setAttribute("inactive", "") : this.removeAttribute("inactive");
 	}
 
 	// A backup element to focus on if no tabbable elements were found among the children
 	private $backup!: HTMLElement;
-
 	private $start!: HTMLElement;
 	private $end!: HTMLElement;
+
+	get hasActiveElement () {
+		return this.contains(document.activeElement) && document.activeElement !== this.$start && document.activeElement !== this.$end;
+	}
 
 	constructor () {
 		super();
@@ -40,7 +43,6 @@ export class FocusTrap extends HTMLElement {
 		this.focusLastElement = this.focusLastElement.bind(this);
 		this.focusFirstElement = this.focusFirstElement.bind(this);
 	}
-
 
 	/**
 	 * Hooks up the component.
@@ -53,7 +55,21 @@ export class FocusTrap extends HTMLElement {
 		this.$start.addEventListener("focus", this.focusLastElement);
 		this.$end.addEventListener("focus", this.focusFirstElement);
 
+		// Focus out is called every time the user tabs around inside the element
+		this.addEventListener("focusout", this.delayedRender);
+		this.addEventListener("focus", this.delayedRender);
+
 		this.render();
+	}
+
+	/**
+	 * This function is a workaround due to the document.activeElement being the wrong
+	 * element right before the correct one is set.
+	 */
+	private delayedRender () {
+		setTimeout(() => {
+			this.render();
+		});
 	}
 
 	/**
@@ -62,6 +78,8 @@ export class FocusTrap extends HTMLElement {
 	disconnectedCallback () {
 		this.$start.removeEventListener("focus", this.focusLastElement);
 		this.$end.removeEventListener("focus", this.focusFirstElement);
+		this.removeEventListener("focusout", this.delayedRender);
+		this.removeEventListener("focus", this.delayedRender);
 	}
 
 	/**
@@ -118,8 +136,8 @@ export class FocusTrap extends HTMLElement {
 	 * Returns the template for the component.
 	 */
 	protected render () {
-		this.$start.setAttribute("tabindex", this.inactive ? `-1` : `0`);
-		this.$end.setAttribute("tabindex", this.inactive ? `-1` : `0`);
+		this.$start.setAttribute("tabindex", !this.hasActiveElement || this.inactive ? `-1` : `0`);
+		this.$end.setAttribute("tabindex", !this.hasActiveElement || this.inactive ? `-1` : `0`);
 	}
 }
 

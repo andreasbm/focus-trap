@@ -11,21 +11,52 @@
 		:focus {
 			outline: 2px solid blue;
 		}
+
+		focus-trap {
+			display: block;
+			border-radius: 6px;
+			padding: 24px;
+			border: 1px solid grey;
+		}
+
+		focus-trap:not([inactive]) {
+			background: rgba(0, 0, 0, 0.1);
+		}
 	</style>
 </head>
 <body>
 
-<focus-trap>
-	<button>Focus 1</button>
-	<button>Focus 2</button>
-	<button>Focus 3</button>
-	<button>Focus 4</button>
-	<button>Focus 5</button>
-</focus-trap>
+	<h2>@appnest/focus-trap</h2>
 
-<noscript>
-	<p>Please enable Javascript in your browser.</p>
-</noscript>
+	<p>Tab around this demo and notice how your focus is trapped.</p>
 
+	<p>Here's some <a href="#">focusable</a> <a href="#">parts</a> outside the trap.</p>
+
+	<focus-trap>
+		<span>Here's a focus trap <a href="#">with</a> <a href="#">some</a> <a href="#">focusable</a> parts.</span>
+		<button id="button">Disable focus trap</button>
+	</focus-trap>
+
+	<p>Here's some more <a href="#">focusable</a> <a href="#">parts</a> outside the trap.</p>
+
+	<a href="https://github.com/andreasbm/focus-trap">Source</a>
+
+	<noscript>
+		<p>Please enable Javascript in your browser.</p>
+	</noscript>
+
+
+	<script>
+		const $btn = document.querySelector("#button");
+		const $focusTrap = document.querySelector("focus-trap");
+		let inactive = false;
+
+		$btn.addEventListener("click", () => {
+			inactive = !inactive;
+			$focusTrap.inactive = inactive;
+			$btn.innerText = inactive ? "Enable focus trap" : "Disable focus trap";
+		});
+
+	</script>
 </body>
 </html>
