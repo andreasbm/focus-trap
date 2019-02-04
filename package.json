@@ -11,6 +11,7 @@
 		"s": "npm run s:dev",
 		"start": "npm run s",
 		"b:lib": "node pre-build.js && tsc -p tsconfig.build.json",
+		"git:add:commit:push": "git add . && git commit --no-edit --amend --no-verify && git push",
 		"bump:patch": "npm version patch && npm run git:add:commit:push",
 		"bump:minor": "npm version minor && npm run git:add:commit:push",
 		"bump:major": "npm version major && npm run git:add:commit:push",
