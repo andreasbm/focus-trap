@@ -12,7 +12,6 @@
 A lightweight web component to trap focus within a DOM node. A focus trap ensures that `tab` and `shift + tab` keys will cycle through the focus trap's tabbable elements but will not leave the focus trap. This is great for making accessible components such as dropdowns or dialogs. Check out the demo at [https://appnest-demo.firebaseapp.com/focus-trap/](https://appnest-demo.firebaseapp.com/focus-trap/).
 
 <img src="https://raw.githubusercontent.com/andreasbm/focus-trap/master/assets/demo.gif" width="400">
-<img src="https://raw.githubusercontent.com/andreasbm/focus-trap/master/assets/dialog.gif" width="400">
 
 **Features**
 
