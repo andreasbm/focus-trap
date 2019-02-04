@@ -32,14 +32,14 @@ export function queryShadowRoot (root: ShadowRoot | HTMLElement,
 	// Go through each child and continue the traversing if necessary
 	const children = <HTMLElement[]>Array.from(root.children);
 	for (const $child of children) {
-		if ($child.shadowRoot != null) {
+		if (isMatch($child)) {
+			matches.push($child);
+
+		} else if ($child.shadowRoot != null) {
 			matches.push(...queryShadowRoot($child.shadowRoot, isMatch, maxDepth, depth + 1));
 
 		} else if ($child.tagName === "SLOT") {
 			matches.push(...traverseSlot(<HTMLSlotElement>$child));
-
-		} else if (isMatch($child)) {
-			matches.push($child);
 
 		} else {
 			matches.push(...queryShadowRoot($child, isMatch, maxDepth, depth + 1));

@@ -22,6 +22,8 @@ const testElements: {tag: string, focusable: boolean, attributes?: {[key: string
 	{tag: "textarea", focusable: false, attributes: {disabled: ""}},
 	{tag: "button", focusable: false, attributes: {disabled: ""}},
 	{tag: "select", focusable: false, attributes: {disabled: ""}},
+	{tag: "button", focusable: false, attributes: {"aria-hidden": ""}},
+	{tag: "button", focusable: false, attributes: {"hidden": ""}},
 
 	// IFrames
 	{tag: "iframe", focusable: true}
