@@ -13,7 +13,7 @@
 		}
 
 		focus-trap {
-			display: block;
+			display: inline-block;
 			border-radius: 6px;
 			padding: 24px;
 			border: 1px solid grey;
@@ -26,26 +26,33 @@
 		#label {
 			opacity: 0.5;
 		}
+
+		section {
+			margin: 50px auto;
+			max-width: 450px;
+		}
 	</style>
 </head>
 <body>
 
-	<h2>@appnest/focus-trap</h2>
+	<section>
+		<h2>@appnest/focus-trap</h2>
+		<p>Tab around this demo and notice how your focus is trapped.</p>
 
-	<p>Tab around this demo and notice how your focus is trapped.</p>
+		<p>Here's some <a href="#">focusable</a> <a href="#">parts</a> outside the trap.</p>
 
-	<p>Here's some <a href="#">focusable</a> <a href="#">parts</a> outside the trap.</p>
+		<focus-trap>
+			<p>Here's a focus trap <a href="#">with</a> <a href="#">some</a> <a href="#">focusable</a> parts.</p>
+			<button id="button">Disable focus trap</button>
+		</focus-trap>
 
-	<focus-trap>
-		<p>Here's a focus trap <a href="#">with</a> <a href="#">some</a> <a href="#">focusable</a> parts.</p>
-		<button id="button">Disable focus trap</button>
-	</focus-trap>
+		<p>Here's some more <a href="#">focusable</a> <a href="#">parts</a> outside the trap.</p>
 
-	<p>Here's some more <a href="#">focusable</a> <a href="#">parts</a> outside the trap.</p>
+		<p id="label">If you are having troubles with the focus ring being invisible in Safari or Firefox you need to activate the accessibility settings in the browser. Read more <a href="http://forums.devshed.com/html-programming-1/safari-submit-button-wont-focus-tab-key-effectively-488012.html" target="_blank">here</a> or <a href="https://stackoverflow.com/questions/11704828/how-to-allow-keyboard-focus-of-links-in-firefox" target="_blank">here</a> if you are interested in learning more.</p>
 
-	<p id="label">If you are having troubles with the focus ring being invisible in Safari or Firefox you need to activate the accessibility settings in the browser. Read more <a href="http://forums.devshed.com/html-programming-1/safari-submit-button-wont-focus-tab-key-effectively-488012.html" target="_blank">here</a> or <a href="https://stackoverflow.com/questions/11704828/how-to-allow-keyboard-focus-of-links-in-firefox" target="_blank">here</a> if you are interested in learning more.</p>
+		<a href="https://github.com/andreasbm/focus-trap">Source</a>
 
-	<a href="https://github.com/andreasbm/focus-trap">Source</a>
+	</section>
 
 	<noscript>
 		<p>Please enable Javascript in your browser.</p>
