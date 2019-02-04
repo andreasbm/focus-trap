@@ -1,4 +1,4 @@
-import { FOCUSABLE_QUERY, traverseShadowRootsAndSlots } from "./shadow";
+import { findActiveElement, FOCUSABLE_QUERY, queryShadowRoot } from "./shadow";
 
 const template = document.createElement("template");
 template.innerHTML = `
@@ -42,7 +42,8 @@ export class FocusTrap extends HTMLElement implements IFocusTrap {
 	 * Returns whether the global focused element is currently within the focus trap.
 	 */
 	get hasActiveElement () {
-		return this.contains(document.activeElement);
+		const activeElement = findActiveElement(document);
+		return activeElement != null ? this.contains(activeElement) : false;
 	}
 
 	constructor () {
@@ -109,7 +110,7 @@ export class FocusTrap extends HTMLElement implements IFocusTrap {
 	 * Returns a list of the focusable children found within the element.
 	 */
 	getFocusableChildren (): HTMLElement[] {
-		return traverseShadowRootsAndSlots(this, FOCUSABLE_QUERY);
+		return queryShadowRoot(this, FOCUSABLE_QUERY);
 	}
 
 	/**
