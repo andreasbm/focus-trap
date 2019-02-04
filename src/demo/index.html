@@ -22,6 +22,10 @@
 		focus-trap:not([inactive]) {
 			background: rgba(0, 0, 0, 0.1);
 		}
+
+		#label {
+			opacity: 0.5;
+		}
 	</style>
 </head>
 <body>
@@ -38,6 +42,8 @@
 	</focus-trap>
 
 	<p>Here's some more <a href="#">focusable</a> <a href="#">parts</a> outside the trap.</p>
+
+	<p id="label">If you are having troubles with the focus ring being invisible in Safari or Firefox you need to activate the accessibility settings in the browser. Read more <a href="http://forums.devshed.com/html-programming-1/safari-submit-button-wont-focus-tab-key-effectively-488012.html" target="_blank">here</a> or <a href="https://stackoverflow.com/questions/11704828/how-to-allow-keyboard-focus-of-links-in-firefox" target="_blank">here</a> if you are interested in learning more.</p>
 
 	<a href="https://github.com/andreasbm/focus-trap">Source</a>
 
