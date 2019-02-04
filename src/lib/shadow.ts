@@ -12,20 +12,6 @@ export const FOCUSABLE_QUERY = [
 ].join(",");
 
 /**
- * Traverses the shadowroots and returns the most inner activeElement (the element that currently have focus).
- * The implemented algorithm is specified in https://medium.com/dev-channel/focus-inside-shadow-dom-78e8a575b73.
- * @param root
- */
-export function findActiveElement (root: DocumentOrShadowRoot): Element | null {
-	while (root.activeElement != null && root.activeElement.shadowRoot != null && root.activeElement.shadowRoot.activeElement !== root.activeElement) {
-		root = root.activeElement.shadowRoot;
-	}
-
-	return root.activeElement;
-}
-
-
-/**
  * Traverses the slots of the open shadowroots and returns all children matching the query.
  * @param {ShadowRoot | HTMLElement} root
  * @param {string} query

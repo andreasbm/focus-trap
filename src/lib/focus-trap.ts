@@ -1,4 +1,5 @@
-import { findActiveElement, FOCUSABLE_QUERY, queryShadowRoot } from "./shadow";
+import { debounce } from "./debounce";
+import { FOCUSABLE_QUERY, queryShadowRoot } from "./shadow";
 
 const template = document.createElement("template");
 template.innerHTML = `
@@ -10,7 +11,7 @@ template.innerHTML = `
 
 export interface IFocusTrap {
 	inactive: boolean;
-	readonly hasActiveElement: boolean;
+	readonly hasFocus: boolean;
 	focusFirstElement: (() => void);
 	focusLastElement: (() => void);
 	getFocusableChildren: (() => HTMLElement[]);
@@ -38,12 +39,13 @@ export class FocusTrap extends HTMLElement implements IFocusTrap {
 	private $start!: HTMLElement;
 	private $end!: HTMLElement;
 
+	private _hasFocus = false;
+
 	/**
-	 * Returns whether the global focused element is currently within the focus trap.
+	 * Returns whether the element currently has focus.
 	 */
-	get hasActiveElement () {
-		const activeElement = findActiveElement(document);
-		return activeElement != null ? this.contains(activeElement) : false;
+	get hasFocus (): boolean {
+		return this._hasFocus;
 	}
 
 	constructor () {
@@ -54,6 +56,8 @@ export class FocusTrap extends HTMLElement implements IFocusTrap {
 
 		this.focusLastElement = this.focusLastElement.bind(this);
 		this.focusFirstElement = this.focusFirstElement.bind(this);
+		this.onFocusIn = this.onFocusIn.bind(this);
+		this.onFocusOut = this.onFocusOut.bind(this);
 	}
 
 	/**
@@ -68,8 +72,8 @@ export class FocusTrap extends HTMLElement implements IFocusTrap {
 		this.$end.addEventListener("focus", this.focusFirstElement);
 
 		// Focus out is called every time the user tabs around inside the element
-		this.addEventListener("focusout", this.delayedRender);
-		this.addEventListener("focus", this.delayedRender);
+		this.addEventListener("focusin", this.onFocusIn);
+		this.addEventListener("focusout", this.onFocusOut);
 
 		this.render();
 	}
@@ -81,8 +85,8 @@ export class FocusTrap extends HTMLElement implements IFocusTrap {
 	disconnectedCallback () {
 		this.$start.removeEventListener("focus", this.focusLastElement);
 		this.$end.removeEventListener("focus", this.focusFirstElement);
-		this.removeEventListener("focusout", this.delayedRender);
-		this.removeEventListener("focus", this.delayedRender);
+		this.removeEventListener("focusin", this.onFocusIn);
+		this.removeEventListener("focusout", this.onFocusOut);
 	}
 
 	/**
@@ -136,13 +140,31 @@ export class FocusTrap extends HTMLElement implements IFocusTrap {
 	}
 
 	/**
-	 * This function is a workaround due to the document.activeElement
-	 * having the wrong element present right before the correct one is set.
-	 * This might be due to the order of which the focusout and other events fire.
+	 * When the element gains focus this function is called.
 	 */
-	protected delayedRender () {
-		setTimeout(() => {
-			this.render();
+	private onFocusIn () {
+		this.updateHasFocus(true);
+	}
+
+	/**
+	 * When the element looses its focus this function is called.
+	 */
+	private onFocusOut () {
+		this.updateHasFocus(false);
+	}
+
+	/**
+	 * Updates the has focus property and updates the view.
+	 * The update is debounces because the focusin and focusout out
+	 * might fire multiple times in a row.
+	 * @param value
+	 */
+	private updateHasFocus (value: boolean) {
+		debounce(() => {
+			if (this.hasFocus !== value) {
+				this._hasFocus = value;
+				this.render();
+			}
 		});
 	}
 
@@ -150,8 +172,8 @@ export class FocusTrap extends HTMLElement implements IFocusTrap {
 	 * Updates the template.
 	 */
 	protected render () {
-		this.$start.setAttribute("tabindex", !this.hasActiveElement || this.inactive ? `-1` : `0`);
-		this.$end.setAttribute("tabindex", !this.hasActiveElement || this.inactive ? `-1` : `0`);
+		this.$start.setAttribute("tabindex", !this.hasFocus || this.inactive ? `-1` : `0`);
+		this.$end.setAttribute("tabindex", !this.hasFocus || this.inactive ? `-1` : `0`);
 	}
 }
 

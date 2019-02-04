@@ -45,16 +45,16 @@ The `focus-trap` element implements the following interface.
 ```typescript
 interface IFocusTrap {
   inactive: boolean;
-  readonly hasActiveElement: boolean;
+  readonly hasFocus: boolean;
   focusFirstElement: (() => void);
   focusLastElement: (() => void);
   getFocusableChildren: (() => HTMLElement[]);
 }
 ```
 
-### `readonly hasActiveElement: boolean;`
+### `readonly hasFocus: boolean;`
 
-Returns whether the global focused element is currently within the focus trap.
+Returns whether the focus trap currently has focus.
 
 ### `inactive: boolean;`
 
