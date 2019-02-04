@@ -5,7 +5,6 @@ const template = document.createElement("template");
 template.innerHTML = `
 	<div id="start"></div>
 	<slot></slot>
-	<div id="backup"></div>
 	<div id="end"></div>
 `;
 
@@ -34,8 +33,6 @@ export class FocusTrap extends HTMLElement implements IFocusTrap {
 		value ? this.setAttribute("inactive", "") : this.removeAttribute("inactive");
 	}
 
-	// A backup element to focus on if no tabbable elements were found among the children
-	private $backup!: HTMLElement;
 	private $start!: HTMLElement;
 	private $end!: HTMLElement;
 
@@ -64,7 +61,6 @@ export class FocusTrap extends HTMLElement implements IFocusTrap {
 	 * Hooks up the component.
 	 */
 	connectedCallback () {
-		this.$backup = this.shadowRoot!.querySelector<HTMLElement>("#backup")!;
 		this.$start = this.shadowRoot!.querySelector<HTMLElement>("#start")!;
 		this.$end = this.shadowRoot!.querySelector<HTMLElement>("#end")!;
 
@@ -115,7 +111,6 @@ export class FocusTrap extends HTMLElement implements IFocusTrap {
 	 */
 	getFocusableChildren (): HTMLElement[] {
 		return queryShadowRoot(this);
-		// return queryShadowRoot(this, FOCUSABLE_QUERY);
 	}
 
 	/**
@@ -132,13 +127,9 @@ export class FocusTrap extends HTMLElement implements IFocusTrap {
 			} else {
 				focusableChildren[0].focus();
 			}
-
-			this.$backup.setAttribute("tabindex", "-1");
-		} else {
-			this.$backup.setAttribute("tabindex", "0");
-			this.$backup.focus();
 		}
 	}
+
 
 	/**
 	 * When the element gains focus this function is called.
