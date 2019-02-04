@@ -1,6 +1,6 @@
 {
 	"name": "@appnest/focus-trap",
-	"version": "0.0.2",
+	"version": "0.0.3",
 	"scripts": {
 		"ncu": "ncu -u -a && npm update && npm install",
 		"test": "karma start",
