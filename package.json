@@ -14,6 +14,7 @@
 		"git:add:commit:push": "git add . && git commit --no-edit --amend --no-verify && git push",
 		"bump:patch": "npm version patch && npm run git:add:commit:push",
 		"bump:minor": "npm version minor && npm run git:add:commit:push",
+		"publish": "cd dist && npm publish --access=public && cd ..",
 		"bump:major": "npm version major && npm run git:add:commit:push",
 		"publish:patch": "npm run bump:patch && npm run b:lib && npm run publish",
 		"publish:minor": "npm run bump:minor && npm run b:lib && npm run publish",
