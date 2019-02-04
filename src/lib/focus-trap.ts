@@ -1,4 +1,4 @@
-import { TABBABLE_QUERY, traverseShadowRootsAndSlots } from "./shadow";
+import { FOCUSABLE_QUERY, traverseShadowRootsAndSlots } from "./shadow";
 
 const template = document.createElement("template");
 template.innerHTML = `
@@ -109,9 +109,7 @@ export class FocusTrap extends HTMLElement implements IFocusTrap {
 	 * Returns a list of the focusable children found within the element.
 	 */
 	getFocusableChildren (): HTMLElement[] {
-		// const assignedNodes = this.assignedSlot!.assignedNodes();
-		// console.log(assignedNodes[0].parentElement!);
-		return traverseShadowRootsAndSlots(this, TABBABLE_QUERY);
+		return traverseShadowRootsAndSlots(this, FOCUSABLE_QUERY);
 	}
 
 	/**
@@ -122,7 +120,6 @@ export class FocusTrap extends HTMLElement implements IFocusTrap {
 		if (this.inactive) return;
 
 		let focusableChildren = this.getFocusableChildren();
-		console.log("CHILDREN", focusableChildren);
 		if (focusableChildren.length > 0) {
 			if (trapToEnd) {
 				focusableChildren[focusableChildren.length - 1].focus();

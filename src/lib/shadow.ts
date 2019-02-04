@@ -1,8 +1,8 @@
 /**
- * A query targeted at all tabbable elements.
+ * A query targeted at all focusable elements.
  * @type {string}
  */
-export const TABBABLE_QUERY = [
+export const FOCUSABLE_QUERY = [
 	`[href]`,
 	`[tabindex]:not([tabindex="-1"])`,
 	`button:not([disabled])`,
