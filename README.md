@@ -33,7 +33,7 @@ Import `@appnest/focus-trap` somewhere in your code and you're ready to go! Simp
 
 ## Focus ring in Safari & Firefox
 
-If you are having troubles with the focus ring being invisible on Safari you need to activate the accessibility settings. Read [this](http://forums.devshed.com/html-programming-1/safari-submit-button-wont-focus-tab-key-effectively-488012.html) issue if you are interested in learning more. The same goes for [Firefox](https://stackoverflow.com/questions/11704828/how-to-allow-keyboard-focus-of-links-in-firefox).
+If you are having troubles with the focus ring being invisible in Safari or Firefox you need to activate the accessibility settings. Read more [here](http://forums.devshed.com/html-programming-1/safari-submit-button-wont-focus-tab-key-effectively-488012.html) or [here](https://stackoverflow.com/questions/11704828/how-to-allow-keyboard-focus-of-links-in-firefox) if you are interested in learning more.
 
 ## 🎉 License
 

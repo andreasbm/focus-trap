@@ -1,6 +1,33 @@
 {
 	"name": "@appnest/focus-trap",
 	"version": "0.0.4",
+	"license": "MIT",
+	"module": "index.js",
+	"author": "Appnest",
+	"description": "A lightweight web component to trap focus within a DOM node",
+	"bugs": {
+		"url": "https://github.com/andreasbm/focus-trap/issues"
+	},
+	"homepage": "https://github.com/andreasbm/focus-trap#readme",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/andreasbm/focus-trap.git"
+	},
+	"keywords": [
+		"custom",
+		"elements",
+		"web",
+		"component",
+		"custom element",
+		"web component",
+		"focus",
+		"accessibility",
+		"dialog",
+		"focus trap",
+		"trap"
+	],
+	"main": "index.js",
+	"types": "index.d.ts",
 	"scripts": {
 		"ncu": "ncu -u -a && npm update && npm install",
 		"test": "karma start",
