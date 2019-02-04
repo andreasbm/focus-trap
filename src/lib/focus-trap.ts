@@ -8,7 +8,15 @@ template.innerHTML = `
 	<div id="end"></div>
 `;
 
-export class FocusTrap extends HTMLElement {
+export interface IFocusTrap {
+	inactive: boolean;
+	readonly hasActiveElement: boolean;
+	focusFirstElement: (() => void);
+	focusLastElement: (() => void);
+	getFocusableChildren: (() => HTMLElement[]);
+}
+
+export class FocusTrap extends HTMLElement implements IFocusTrap {
 
 	// Whenever one of these attributes changes we need to render the template again.
 	static get observedAttributes () {
@@ -30,8 +38,11 @@ export class FocusTrap extends HTMLElement {
 	private $start!: HTMLElement;
 	private $end!: HTMLElement;
 
+	/**
+	 * Returns whether the global focused element is currently within the focus trap.
+	 */
 	get hasActiveElement () {
-		return this.contains(document.activeElement) && document.activeElement !== this.$start && document.activeElement !== this.$end;
+		return this.contains(document.activeElement);
 	}
 
 	constructor () {
@@ -62,18 +73,9 @@ export class FocusTrap extends HTMLElement {
 		this.render();
 	}
 
-	/**
-	 * This function is a workaround due to the document.activeElement being the wrong
-	 * element right before the correct one is set.
-	 */
-	private delayedRender () {
-		setTimeout(() => {
-			this.render();
-		});
-	}
 
 	/**
-	 * Tear down the component.
+	 * Tears down the component.
 	 */
 	disconnectedCallback () {
 		this.$start.removeEventListener("focus", this.focusLastElement);
@@ -83,34 +85,44 @@ export class FocusTrap extends HTMLElement {
 	}
 
 	/**
-	 * When the attributes changes we need to rerender the template.
+	 * When the attributes changes we need to re-render the template.
 	 */
 	attributeChangedCallback () {
 		this.render();
 	}
 
 	/**
-	 * Focuses the first focusable element.
+	 * Focuses the first focusable element in the focus trap.
 	 */
 	focusFirstElement () {
 		this.trapFocus();
 	}
 
 	/**
-	 * Focuses the last focusable element.
+	 * Focuses the last focusable element in the focus trap.
 	 */
 	focusLastElement () {
 		this.trapFocus(true);
 	}
 
 	/**
+	 * Returns a list of the focusable children found within the element.
+	 */
+	getFocusableChildren (): HTMLElement[] {
+		// const assignedNodes = this.assignedSlot!.assignedNodes();
+		// console.log(assignedNodes[0].parentElement!);
+		return traverseShadowRootsAndSlots(this, TABBABLE_QUERY);
+	}
+
+	/**
 	 * Focuses on either the last or first focusable element.
 	 * @param {boolean} trapToEnd
 	 */
-	trapFocus (trapToEnd?: boolean) {
+	protected trapFocus (trapToEnd?: boolean) {
 		if (this.inactive) return;
 
 		let focusableChildren = this.getFocusableChildren();
+		console.log("CHILDREN", focusableChildren);
 		if (focusableChildren.length > 0) {
 			if (trapToEnd) {
 				focusableChildren[focusableChildren.length - 1].focus();
@@ -126,14 +138,18 @@ export class FocusTrap extends HTMLElement {
 	}
 
 	/**
-	 * Returns the children found in the slots that we can focus.
+	 * This function is a workaround due to the document.activeElement
+	 * having the wrong element present right before the correct one is set.
+	 * This might be due to the order of which the focusout and other events fire.
 	 */
-	getFocusableChildren (): HTMLElement[] {
-		return traverseShadowRootsAndSlots(this, TABBABLE_QUERY);
+	protected delayedRender () {
+		setTimeout(() => {
+			this.render();
+		});
 	}
 
 	/**
-	 * Returns the template for the component.
+	 * Updates the template.
 	 */
 	protected render () {
 		this.$start.setAttribute("tabindex", !this.hasActiveElement || this.inactive ? `-1` : `0`);

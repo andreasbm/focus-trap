@@ -38,9 +38,43 @@ Import `@appnest/focus-trap` somewhere in your code and you're ready to go! Simp
 </focus-trap>
 ```
 
+## API
+
+The `focus-trap` element implements the following interface.
+
+```typescript
+interface IFocusTrap {
+  inactive: boolean;
+  readonly hasActiveElement: boolean;
+  focusFirstElement: (() => void);
+  focusLastElement: (() => void);
+  getFocusableChildren: (() => HTMLElement[]);
+}
+```
+
+### `readonly hasActiveElement: boolean;`
+
+Returns whether the global focused element is currently within the focus trap.
+
+### `inactive: boolean;`
+
+Returns whether or not the focus trap is inactive.
+
+### `focusFirstElement: (() => void);`
+
+Focuses the first focusable element in the focus trap.
+
+### `focusLastElement: (() => void);`
+
+Focuses the last focusable element in the focus trap.
+
+### `getFocusableChildren: (() => HTMLElement[]);`
+
+Returns a list of the focusable children found within the element.
+
 ## Focus ring in Safari & Firefox
 
-If you are having troubles with the focus ring being invisible in Safari or Firefox you need to activate the accessibility settings. Read more [here](http://forums.devshed.com/html-programming-1/safari-submit-button-wont-focus-tab-key-effectively-488012.html) or [here](https://stackoverflow.com/questions/11704828/how-to-allow-keyboard-focus-of-links-in-firefox) if you are interested in learning more.
+If you are having troubles with the focus ring being invisible in Safari or Firefox you need to activate the accessibility settings in the browser. Read more [here](http://forums.devshed.com/html-programming-1/safari-submit-button-wont-focus-tab-key-effectively-488012.html) or [here](https://stackoverflow.com/questions/11704828/how-to-allow-keyboard-focus-of-links-in-firefox) if you are interested in learning more.
 
 ## 🎉 License
 
