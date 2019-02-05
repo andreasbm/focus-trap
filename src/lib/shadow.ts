@@ -1,5 +1,3 @@
-import { isFocusable } from "./focusable";
-
 /**
  * Traverses the slots of the open shadowroots and returns all children matching the query.
  * @param {ShadowRoot | HTMLElement} root
@@ -9,7 +7,7 @@ import { isFocusable } from "./focusable";
  * @returns {HTMLElement[]}
  */
 export function queryShadowRoot (root: ShadowRoot | HTMLElement,
-                                 isMatch: (($elem: HTMLElement) => boolean) = isFocusable,
+                                 isMatch: (($elem: HTMLElement) => boolean),
                                  maxDepth: number = 20,
                                  depth: number = 0): HTMLElement[] {
 	let matches: HTMLElement[] = [];
