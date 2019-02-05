@@ -65,6 +65,7 @@ export class FocusTrap extends HTMLElement implements IFocusTrap {
 	 * Hooks up the component.
 	 */
 	connectedCallback () {
+		this.$backup = this.shadowRoot!.querySelector<HTMLElement>("#backup")!;
 		this.$start = this.shadowRoot!.querySelector<HTMLElement>("#start")!;
 		this.$end = this.shadowRoot!.querySelector<HTMLElement>("#end")!;
 
