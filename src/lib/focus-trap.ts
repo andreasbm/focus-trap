@@ -11,7 +11,7 @@ template.innerHTML = `
 
 export interface IFocusTrap {
 	inactive: boolean;
-	readonly hasFocus: boolean;
+	readonly focused: boolean;
 	focusFirstElement: (() => void);
 	focusLastElement: (() => void);
 	getFocusableChildren: (() => HTMLElement[]);
@@ -37,22 +37,25 @@ export class FocusTrap extends HTMLElement implements IFocusTrap {
 	// The backup element is only used if there are no other focusable children
 	private $backup!: HTMLElement;
 
+	// The debounce id is used to distinguish this focus trap from others when debouncing
+	private debounceId = Math.random().toString();
+
 	private $start!: HTMLElement;
 	private $end!: HTMLElement;
 
-	private _hasFocus = false;
+	private _focused = false;
 
 	/**
 	 * Returns whether the element currently has focus.
 	 */
-	get hasFocus (): boolean {
-		return this._hasFocus;
+	get focused (): boolean {
+		return this._focused;
 	}
 
 	constructor () {
 		super();
 
-		const shadow = this.attachShadow({mode: "open", delegatesFocus: true});
+		const shadow = this.attachShadow({mode: "open", delegatesFocus: false});
 		shadow.appendChild(template.content.cloneNode(true));
 
 		this.focusLastElement = this.focusLastElement.bind(this);
@@ -168,19 +171,20 @@ export class FocusTrap extends HTMLElement implements IFocusTrap {
 	 */
 	private updateHasFocus (value: boolean) {
 		debounce(() => {
-			if (this.hasFocus !== value) {
-				this._hasFocus = value;
+			if (this.focused !== value) {
+				this._focused = value;
 				this.render();
 			}
-		});
+		}, 0, this.debounceId);
 	}
 
 	/**
 	 * Updates the template.
 	 */
 	protected render () {
-		this.$start.setAttribute("tabindex", !this.hasFocus || this.inactive ? `-1` : `0`);
-		this.$end.setAttribute("tabindex", !this.hasFocus || this.inactive ? `-1` : `0`);
+		this.$start.setAttribute("tabindex", !this.focused || this.inactive ? `-1` : `0`);
+		this.$end.setAttribute("tabindex", !this.focused || this.inactive ? `-1` : `0`);
+		this.focused ? this.setAttribute("focused", "") : this.removeAttribute("focused");
 	}
 }
 

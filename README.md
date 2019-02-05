@@ -26,7 +26,7 @@ A lightweight web component to trap focus within a DOM node. A focus trap ensure
 npm i @appnest/focus-trap
 ```
 
-## Example
+## Usage
 
 Import `@appnest/focus-trap` somewhere in your code and you're ready to go! Simply add the focus trap to your `html` and it'll be working without any more effort from your part.
 
@@ -50,7 +50,7 @@ interface IFocusTrap {
   inactive: boolean;
 
   // Returns whether the focus trap currently has focus.
-  readonly hasFocus: boolean;
+  readonly focused: boolean;
 
   // Focuses the first focusable element in the focus trap.
   focusFirstElement: (() => void);
