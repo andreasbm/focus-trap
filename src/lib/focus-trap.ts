@@ -48,7 +48,7 @@ export class FocusTrap extends HTMLElement implements IFocusTrap {
 	constructor () {
 		super();
 
-		const shadow = this.attachShadow({mode: "open"});
+		const shadow = this.attachShadow({mode: "open", delegatesFocus: true});
 		shadow.appendChild(template.content.cloneNode(true));
 
 		this.focusLastElement = this.focusLastElement.bind(this);
