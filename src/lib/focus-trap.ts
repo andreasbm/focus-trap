@@ -5,6 +5,7 @@ const template = document.createElement("template");
 template.innerHTML = `
 	<div id="start"></div>
 	<slot></slot>
+	<div id="backup"></div>
 	<div id="end"></div>
 `;
 
@@ -32,6 +33,9 @@ export class FocusTrap extends HTMLElement implements IFocusTrap {
 	set inactive (value: boolean) {
 		value ? this.setAttribute("inactive", "") : this.removeAttribute("inactive");
 	}
+
+	// The backup element is only used if there are no other focusable children
+	private $backup!: HTMLElement;
 
 	private $start!: HTMLElement;
 	private $end!: HTMLElement;
@@ -127,6 +131,16 @@ export class FocusTrap extends HTMLElement implements IFocusTrap {
 			} else {
 				focusableChildren[0].focus();
 			}
+
+			this.$backup.setAttribute("tabindex", "-1");
+		} else {
+			// If there are no focusable children we need to focus on the backup
+			// to trap the focus. This is a useful behavior if the focus trap is
+			// for example used in a dialog and we don't want the user to tab
+			// outside the dialog even though there are no focusable children
+			// in the dialog.
+			this.$backup.setAttribute("tabindex", "0");
+			this.$backup.focus();
 		}
 	}
 
