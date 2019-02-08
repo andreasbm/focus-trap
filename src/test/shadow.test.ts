@@ -28,6 +28,23 @@ rootTemplate.innerHTML = `
 							<a id="14" href="#">I am the center of the world!</a>
 						</element-with-focusable-children>
 					</element-with-focusable-children>
+					
+					<!-- Ignore -->
+					<element-with-focusable-children tabindex="-1" id="15">
+						<element-with-focusable-children id="16">
+							<a id="17" href="#">I am the center of the world!</a>
+						</element-with-focusable-children>
+					</element-with-focusable-children>
+					<element-with-focusable-children aria-hidden id="18">
+						<element-with-focusable-children id="19">
+							<a id="20" href="#">I am the center of the world!</a>
+						</element-with-focusable-children>
+					</element-with-focusable-children>
+					<element-with-focusable-children disabled id="21">
+						<element-with-focusable-children id="22">
+							<a id="23" href="#">I am the center of the world!</a>
+						</element-with-focusable-children>
+					</element-with-focusable-children>
 				</element-with-focusable-children>
 			</element-with-focusable-children>
 		</element-with-focusable-children>

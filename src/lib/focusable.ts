@@ -3,7 +3,27 @@
  * @param $elem
  */
 export function isHidden ($elem: HTMLElement): boolean {
-	return $elem.hidden || $elem.hasAttribute("aria-hidden");
+	return $elem.hasAttribute("hidden")
+		|| ($elem.hasAttribute("aria-hidden") && $elem.getAttribute("aria-hidden") !== "false");
+}
+
+/**
+ * Returns whether the element is disabled.
+ * @param $elem
+ */
+export function isDisabled ($elem: HTMLElement): boolean {
+	return $elem.hasAttribute("disabled")
+		|| ($elem.hasAttribute("aria-disabled") && $elem.getAttribute("aria-disabled") !== "false");
+}
+
+/**
+ * Returns whether the element is removed from the tab order.
+ * @param $elem
+ */
+export function isRemovedFromTabOrder ($elem: HTMLElement): boolean {
+	return isHidden($elem)
+		|| $elem.getAttribute("tabindex") === "-1"
+		|| isDisabled($elem);
 }
 
 /**
@@ -14,24 +34,24 @@ export function isHidden ($elem: HTMLElement): boolean {
  */
 export function isFocusable ($elem: HTMLElement): boolean {
 
-	// Discard elements that are hidden and non tabbable
-	if (isHidden($elem) || $elem.tabIndex < 0) {
+	// Discard elements that are removed from the tab order.
+	if (isRemovedFromTabOrder($elem)) {
 		return false;
 	}
 
 	return (
 
-		// At this point we know that the element can have focus if the tabindex attribute exists
+		// At this point we know that the element can have focus (eg. won't be -1) if the tabindex attribute exists
 		$elem.hasAttribute("tabindex")
 
 		// Anchor tags or area tags with a href set
 		|| ($elem instanceof HTMLAnchorElement || $elem instanceof HTMLAreaElement) && $elem.hasAttribute("href")
 
 		// Form elements which are not disabled
-		|| (($elem instanceof HTMLButtonElement
+		|| ($elem instanceof HTMLButtonElement
 			|| $elem instanceof HTMLInputElement
 			|| $elem instanceof HTMLTextAreaElement
-			|| $elem instanceof HTMLSelectElement) && !$elem.disabled)
+			|| $elem instanceof HTMLSelectElement)
 
 		// IFrames
 		|| $elem instanceof HTMLIFrameElement

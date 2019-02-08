@@ -7,6 +7,11 @@ const testElements: {tag: string, focusable: boolean, attributes?: {[key: string
 	// Elements
 	{tag: "div", focusable: true, attributes: {tabindex: "0"}},
 	{tag: "div", focusable: false},
+	{tag: "div", focusable: false, attributes: {tabindex: "0", "aria-disabled": ""}},
+	{tag: "div", focusable: true, attributes: {tabindex: "0", "aria-disabled": "false"}},
+	{tag: "div", focusable: false, attributes: {tabindex: "0", "aria-hidden": ""}},
+	{tag: "div", focusable: true, attributes: {tabindex: "0", "aria-hidden": "false"}},
+	{tag: "div", focusable: false, attributes: {tabindex: "0", "hidden": ""}},
 
 	// Links
 	{tag: "a", focusable: true, attributes: {href: "#"}},
@@ -27,7 +32,6 @@ const testElements: {tag: string, focusable: boolean, attributes?: {[key: string
 
 	// IFrames
 	{tag: "iframe", focusable: true}
-
 ];
 
 describe("focusable", () => {
@@ -44,7 +48,6 @@ describe("focusable", () => {
 					$elem.setAttribute(key, value);
 				}
 			}
-
 			expect(isFocusable($elem)).to.be.equal(elem.focusable);
 		}
 	});
