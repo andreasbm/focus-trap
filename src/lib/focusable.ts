@@ -21,8 +21,9 @@ export function isDisabled ($elem: HTMLElement): boolean {
  * @param $elem
  */
 export function isRemovedFromTabOrder ($elem: HTMLElement): boolean {
-	return isHidden($elem)
-		|| $elem.getAttribute("tabindex") === "-1"
+	return $elem.getAttribute("tabindex") === "-1"
+		|| $elem.hasAttribute("readonly")
+		|| isHidden($elem)
 		|| isDisabled($elem);
 }
 
