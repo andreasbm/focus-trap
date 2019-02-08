@@ -11,7 +11,10 @@ const testElements: {tag: string, focusable: boolean, attributes?: {[key: string
 	{tag: "div", focusable: true, attributes: {tabindex: "0", "aria-disabled": "false"}},
 	{tag: "div", focusable: false, attributes: {tabindex: "0", "aria-hidden": ""}},
 	{tag: "div", focusable: true, attributes: {tabindex: "0", "aria-hidden": "false"}},
-	{tag: "div", focusable: false, attributes: {tabindex: "0", "hidden": ""}},
+	{tag: "div", focusable: false, attributes: {tabindex: "0", hidden: ""}},
+	{tag: "div", focusable: false, attributes: {tabindex: "0", display: "none"}},
+	{tag: "div", focusable: false, attributes: {tabindex: "0", visibility: "none"}},
+	{tag: "div", focusable: false, attributes: {tabindex: "0", visibility: "collapse"}},
 
 	// Links
 	{tag: "a", focusable: true, attributes: {href: "#"}},
@@ -28,8 +31,7 @@ const testElements: {tag: string, focusable: boolean, attributes?: {[key: string
 	{tag: "button", focusable: false, attributes: {disabled: ""}},
 	{tag: "select", focusable: false, attributes: {disabled: ""}},
 	{tag: "button", focusable: false, attributes: {"aria-hidden": ""}},
-	{tag: "button", focusable: false, attributes: {"hidden": ""}},
-	{tag: "input", focusable: false, attributes: {"readonly": ""}},
+	{tag: "button", focusable: false, attributes: {hidden: ""}},
 
 	// IFrames
 	{tag: "iframe", focusable: true}

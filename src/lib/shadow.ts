@@ -38,23 +38,16 @@ export function queryShadowRoot (root: ShadowRoot | HTMLElement,
 			continue;
 		}
 
+		// If the child matches we always add it
+		if (isMatch($child)) {
+			matches.push($child);
+		}
+
 		if ($child.shadowRoot != null) {
-			const shadowRootChildren = queryShadowRoot($child.shadowRoot, skipNode, isMatch, maxDepth, depth + 1);
-
-			// Leaf elements are always prioritized. If we however couldn't find any children in the shadow root
-			// we can add this node to the array of matches if it matches.
-			if (shadowRootChildren.length === 0 && isMatch($child)) {
-				matches.push($child);
-
-			} else {
-				matches.push(...shadowRootChildren);
-			}
+			matches.push(...queryShadowRoot($child.shadowRoot, skipNode, isMatch, maxDepth, depth + 1));
 
 		} else if ($child.tagName === "SLOT") {
 			matches.push(...traverseSlot(<HTMLSlotElement>$child));
-
-		} else if (isMatch($child)) {
-			matches.push($child);
 
 		} else {
 			matches.push(...queryShadowRoot($child, skipNode, isMatch, maxDepth, depth + 1));

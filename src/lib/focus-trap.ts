@@ -1,5 +1,5 @@
 import { debounce } from "./debounce";
-import { isFocusable, isRemovedFromTabOrder } from "./focusable";
+import { isFocusable, isHidden } from "./focusable";
 import { queryShadowRoot } from "./shadow";
 
 const template = document.createElement("template");
@@ -119,7 +119,7 @@ export class FocusTrap extends HTMLElement implements IFocusTrap {
 	 * Returns a list of the focusable children found within the element.
 	 */
 	getFocusableChildren (): HTMLElement[] {
-		return queryShadowRoot(this, isRemovedFromTabOrder, isFocusable);
+		return queryShadowRoot(this, isHidden, isFocusable);
 	}
 
 	/**

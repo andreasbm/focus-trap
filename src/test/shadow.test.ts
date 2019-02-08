@@ -23,14 +23,14 @@ rootTemplate.innerHTML = `
 		<element-with-focusable-children id="9">
 			<element-with-focusable-children id="10">
 				<element-with-focusable-children id="11">
-					<element-with-focusable-children id="12">
+					<element-with-focusable-children id="12" aria-hidden="false">
 						<element-with-focusable-children id="13">
 							<a id="14" href="#">I am the center of the world!</a>
 						</element-with-focusable-children>
 					</element-with-focusable-children>
 					
 					<!-- Ignore -->
-					<element-with-focusable-children tabindex="-1" id="15">
+					<element-with-focusable-children hidden id="15">
 						<element-with-focusable-children id="16">
 							<a id="17" href="#">I am the center of the world!</a>
 						</element-with-focusable-children>
@@ -40,9 +40,19 @@ rootTemplate.innerHTML = `
 							<a id="20" href="#">I am the center of the world!</a>
 						</element-with-focusable-children>
 					</element-with-focusable-children>
-					<element-with-focusable-children disabled id="21">
-						<element-with-focusable-children id="22">
-							<a id="23" href="#">I am the center of the world!</a>
+					<element-with-focusable-children style="display: none" id="18">
+						<element-with-focusable-children id="19">
+							<a id="20" href="#">I am the center of the world!</a>
+						</element-with-focusable-children>
+					</element-with-focusable-children>
+					<element-with-focusable-children style="visibility: hidden" id="18">
+						<element-with-focusable-children id="19">
+							<a id="20" href="#">I am the center of the world!</a>
+						</element-with-focusable-children>
+					</element-with-focusable-children>
+					<element-with-focusable-children style="visibility: collapse" id="18">
+						<element-with-focusable-children id="19">
+							<a id="20" href="#">I am the center of the world!</a>
 						</element-with-focusable-children>
 					</element-with-focusable-children>
 				</element-with-focusable-children>

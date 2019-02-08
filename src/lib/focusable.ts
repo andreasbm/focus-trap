@@ -4,7 +4,14 @@
  */
 export function isHidden ($elem: HTMLElement): boolean {
 	return $elem.hasAttribute("hidden")
-		|| ($elem.hasAttribute("aria-hidden") && $elem.getAttribute("aria-hidden") !== "false");
+		|| ($elem.hasAttribute("aria-hidden") && $elem.getAttribute("aria-hidden") !== "false")
+		// TODO: Figure out how to get the values below without window.getComputedStyle (bad performance).
+		// Currently we only know if the element is hidden if it's set directly on the element.
+		// This might lead to unexpected behavior if the first or last element is hidden through the stylesheet.
+		// Add a test case for this.
+		|| $elem.style.display === `none`
+		|| $elem.style.visibility === `hidden`
+		|| $elem.style.visibility === `collapse`;
 }
 
 /**
@@ -17,17 +24,6 @@ export function isDisabled ($elem: HTMLElement): boolean {
 }
 
 /**
- * Returns whether the element is removed from the tab order.
- * @param $elem
- */
-export function isRemovedFromTabOrder ($elem: HTMLElement): boolean {
-	return $elem.getAttribute("tabindex") === "-1"
-		|| $elem.hasAttribute("readonly")
-		|| isHidden($elem)
-		|| isDisabled($elem);
-}
-
-/**
  * Determines whether an element is focusable.
  * Read more here: https://stackoverflow.com/questions/1599660/which-html-elements-can-receive-focus/1600194#1600194
  * Or here: https://stackoverflow.com/questions/18261595/how-to-check-if-a-dom-element-is-focusable
@@ -36,7 +32,7 @@ export function isRemovedFromTabOrder ($elem: HTMLElement): boolean {
 export function isFocusable ($elem: HTMLElement): boolean {
 
 	// Discard elements that are removed from the tab order.
-	if (isRemovedFromTabOrder($elem)) {
+	if ($elem.getAttribute("tabindex") === "-1" || isHidden($elem) || isDisabled($elem)) {
 		return false;
 	}
 
