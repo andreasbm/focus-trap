@@ -183,6 +183,7 @@ export class FocusTrap extends HTMLElement implements IFocusTrap {
 	 * Updates the template.
 	 */
 	protected render () {
+		if (!this.isConnected) return;
 		this.$start.setAttribute("tabindex", !this.focused || this.inactive ? `-1` : `0`);
 		this.$end.setAttribute("tabindex", !this.focused || this.inactive ? `-1` : `0`);
 		this.focused ? this.setAttribute("focused", "") : this.removeAttribute("focused");
