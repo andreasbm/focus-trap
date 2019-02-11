@@ -48,6 +48,6 @@
 		"publish:major": "npm run test && npm run bump:major && npm run b:lib && npm run publish"
 	},
 	"devDependencies": {
-		"@appnest/web-config": "0.3.4"
+		"@appnest/web-config": "0.3.10"
 	}
 }
