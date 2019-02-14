@@ -21,7 +21,7 @@ export function queryShadowRoot (root: ShadowRoot | HTMLElement,
 
 	// Traverses a slot element
 	const traverseSlot = ($slot: HTMLSlotElement) => {
-		const assignedNodes = $slot.assignedNodes();
+		const assignedNodes = $slot.assignedNodes().filter(node => node.nodeName !== `#text`);
 		if (assignedNodes.length > 0) {
 			return queryShadowRoot(assignedNodes[0].parentElement!, skipNode, isMatch, maxDepth, depth + 1);
 		}
