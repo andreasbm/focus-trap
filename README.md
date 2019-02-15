@@ -1,32 +1,37 @@
-# @appnest/focus-trap
+<h1 align="center">@appnest/focus-trap</h1>
 
-<a href="https://npmcharts.com/compare/@appnest/focus-trap?minimal=true"><img alt="Downloads per month" src="https://img.shields.io/npm/dm/@appnest/focus-trap.svg" height="20"></img></a>
-<a href="https://david-dm.org/andreasbm/focus-trap"><img alt="Dependencies" src="https://img.shields.io/david/andreasbm/focus-trap.svg" height="20"></img></a>
-<a href="https://www.npmjs.com/package/@appnest/focus-trap"><img alt="NPM Version" src="https://img.shields.io/npm/v/@appnest/focus-trap.svg" height="20"></img></a>
-<a href="https://github.com/andreasbm/focus-trap/graphs/contributors"><img alt="Contributors" src="https://img.shields.io/github/contributors/andreasbm/focus-trap.svg" height="20"></img></a>
-<a href="https://opensource.org/licenses/MIT"><img alt="MIT License" src="https://img.shields.io/badge/License-MIT-yellow.svg" height="20"></img></a>
-[![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/@appnest/focus-trap)
+<p align="center">
+		<a href="https://npmcharts.com/compare/@appnest/focus-trap?minimal=true"><img alt="Downloads per month" src="https://img.shields.io/npm/dm/@appnest/focus-trap.svg" height="20"/></a>
+<a href="https://www.npmjs.com/package/@appnest/focus-trap"><img alt="NPM Version" src="https://img.shields.io/npm/v/@appnest/focus-trap.svg" height="20"/></a>
+<a href="https://david-dm.org/andreasbm/focus-trap"><img alt="Dependencies" src="https://img.shields.io/david/andreasbm/focus-trap.svg" height="20"/></a>
+<a href="https://github.com/andreasbm/focus-trap/graphs/contributors"><img alt="Contributors" src="https://img.shields.io/github/contributors/andreasbm/focus-trap.svg" height="20"/></a>
+	</p>
+	
 
-## What is this?
+<p align="center">
+  <b>A lightweight web component to trap focus within a DOM node</b></br>
+  <sub>A focus trap ensures that `tab` and `shift + tab` keys will cycle through the focus trap's tabbable elements but not leave the focus trap. This is great for making [accessible modals](https://www.w3.org/TR/wai-aria-practices/examples/dialog-modal/dialog.html). Go here to see a demo <a href="https://appnest-demo.firebaseapp.com/focus-trap/">https://appnest-demo.firebaseapp.com/focus-trap/</a>.<sub>
+</p>
 
-A lightweight web component to trap focus within a DOM node. A focus trap ensures that `tab` and `shift + tab` keys will cycle through the focus trap's tabbable elements but not leave the focus trap. This is great for making [accessible modals](https://www.w3.org/TR/wai-aria-practices/examples/dialog-modal/dialog.html). Check out the demo at [https://appnest-demo.firebaseapp.com/focus-trap/](https://appnest-demo.firebaseapp.com/focus-trap/).
-
-<img src="https://raw.githubusercontent.com/andreasbm/focus-trap/master/assets/demo.gif" width="400">
-
-**Features**
+<br />
 
 * Does one things very very well - it traps the focus!
 * Pierces through the shadow roots when looking for focusable elements.
 * Works right out of the box (just add it to your markup)
 * Created using only vanilla js - no dependencies and framework agnostic!
 
-## Installation
+![split](https://github.com/andreasbm/web-config/raw/master/split.png)
+
+## ❯ Installation
 
 ```javascript
 npm i @appnest/focus-trap
 ```
 
-## Usage
+
+![split](https://github.com/andreasbm/web-config/raw/master/split.png)
+
+## ❯ Usage
 
 Import `@appnest/focus-trap` somewhere in your code and you're ready to go! Simply add the focus trap to your `html` and it'll be working without any more effort from your part.
 
@@ -40,7 +45,10 @@ Import `@appnest/focus-trap` somewhere in your code and you're ready to go! Simp
 </focus-trap>
 ```
 
-## API
+
+![split](https://github.com/andreasbm/web-config/raw/master/split.png)
+
+## ❯ API
 
 The `focus-trap` element implements the following interface.
 
@@ -63,6 +71,9 @@ interface IFocusTrap {
 }
 ```
 
-## 🎉 License
 
+![split](https://github.com/andreasbm/web-config/raw/master/split.png)
+
+## ❯ License
+	
 Licensed under [MIT](https://opensource.org/licenses/MIT).

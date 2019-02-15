@@ -45,9 +45,39 @@
 		"bump:major": "npm version major && npm run git:add:commit:push",
 		"publish:patch": "npm run test && npm run bump:patch && npm run b:lib && npm run publish",
 		"publish:minor": "npm run test && npm run bump:minor && npm run b:lib && npm run publish",
-		"publish:major": "npm run test && npm run bump:major && npm run b:lib && npm run publish"
+		"publish:major": "npm run test && npm run bump:major && npm run b:lib && npm run publish",
+		"readme": "node node_modules/.bin/readme"
 	},
 	"devDependencies": {
-		"@appnest/web-config": "0.3.10"
+		"@appnest/web-config": "0.3.15"
+	},
+	"readme": {
+		"text": "A focus trap ensures that `tab` and `shift + tab` keys will cycle through the focus trap's tabbable elements but not leave the focus trap. This is great for making [accessible modals](https://www.w3.org/TR/wai-aria-practices/examples/dialog-modal/dialog.html).",
+		"demo": "https://appnest-demo.firebaseapp.com/focus-trap/",
+		"ids": {
+			"npm": "@appnest/focus-trap",
+			"github": "andreasbm/focus-trap",
+			"webcomponents": "@appnest/focus-trap"
+		},
+		"bullets": [
+			"Does one things very very well - it traps the focus!",
+			"Pierces through the shadow roots when looking for focusable elements.",
+			"Works right out of the box (just add it to your markup)",
+			"Created using only vanilla js - no dependencies and framework agnostic!"
+		],
+		"sections": [
+			{
+				"title": "Installation",
+				"content": "readme/installation.md"
+			},
+			{
+				"title": "Usage",
+				"content": "readme/usage.md"
+			},
+			{
+				"title": "API",
+				"content": "readme/api.md"
+			}
+		]
 	}
 }
