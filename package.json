@@ -52,7 +52,7 @@
 		"@appnest/web-config": "0.3.15"
 	},
 	"readme": {
-		"text": "A focus trap ensures that `tab` and `shift + tab` keys will cycle through the focus trap's tabbable elements but not leave the focus trap. This is great for making [accessible modals](https://www.w3.org/TR/wai-aria-practices/examples/dialog-modal/dialog.html).",
+		"text": "A focus trap ensures that <code>tab</code> and <code>shift + tab</code> keys will cycle through the focus trap's tabbable elements but not leave the focus trap. This is great for making <a href='https://www.w3.org/TR/wai-aria-practices/examples/dialog-modal/dialog.html'>accessible modals</a>.",
 		"demo": "https://appnest-demo.firebaseapp.com/focus-trap/",
 		"ids": {
 			"npm": "@appnest/focus-trap",

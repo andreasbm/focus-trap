@@ -5,12 +5,13 @@
 <a href="https://www.npmjs.com/package/@appnest/focus-trap"><img alt="NPM Version" src="https://img.shields.io/npm/v/@appnest/focus-trap.svg" height="20"/></a>
 <a href="https://david-dm.org/andreasbm/focus-trap"><img alt="Dependencies" src="https://img.shields.io/david/andreasbm/focus-trap.svg" height="20"/></a>
 <a href="https://github.com/andreasbm/focus-trap/graphs/contributors"><img alt="Contributors" src="https://img.shields.io/github/contributors/andreasbm/focus-trap.svg" height="20"/></a>
+<a href="https://www.webcomponents.org/element/@appnest/focus-trap"><img alt="Published on webcomponents.org" src="https://img.shields.io/badge/webcomponents.org-published-blue.svg" height="20"/></a>
 	</p>
 	
 
 <p align="center">
   <b>A lightweight web component to trap focus within a DOM node</b></br>
-  <sub>A focus trap ensures that `tab` and `shift + tab` keys will cycle through the focus trap's tabbable elements but not leave the focus trap. This is great for making [accessible modals](https://www.w3.org/TR/wai-aria-practices/examples/dialog-modal/dialog.html). Go here to see a demo <a href="https://appnest-demo.firebaseapp.com/focus-trap/">https://appnest-demo.firebaseapp.com/focus-trap/</a>.<sub>
+  <sub>A focus trap ensures that <code>tab</code> and <code>shift + tab</code> keys will cycle through the focus trap's tabbable elements but not leave the focus trap. This is great for making <a href='https://www.w3.org/TR/wai-aria-practices/examples/dialog-modal/dialog.html'>accessible modals</a>. Go here to see a demo <a href="https://appnest-demo.firebaseapp.com/focus-trap/">https://appnest-demo.firebaseapp.com/focus-trap/</a>.<sub>
 </p>
 
 <br />
