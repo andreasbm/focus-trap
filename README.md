@@ -21,6 +21,8 @@
 * Works right out of the box (just add it to your markup)
 * Created using only vanilla js - no dependencies and framework agnostic!
 
+<img src='https://raw.githubusercontent.com/andreasbm/focus-trap/master/assets/demo.gif' width='400'>
+
 ![split](https://github.com/andreasbm/web-config/raw/master/split.png)
 
 ## ❯ Installation

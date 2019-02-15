@@ -49,7 +49,7 @@
 		"readme": "node node_modules/.bin/readme"
 	},
 	"devDependencies": {
-		"@appnest/web-config": "0.3.15"
+		"@appnest/web-config": "0.3.18"
 	},
 	"readme": {
 		"text": "A focus trap ensures that <code>tab</code> and <code>shift + tab</code> keys will cycle through the focus trap's tabbable elements but not leave the focus trap. This is great for making <a href='https://www.w3.org/TR/wai-aria-practices/examples/dialog-modal/dialog.html'>accessible modals</a>.",
@@ -66,6 +66,9 @@
 			"Created using only vanilla js - no dependencies and framework agnostic!"
 		],
 		"sections": [
+			{
+				"content": "<img src='https://raw.githubusercontent.com/andreasbm/focus-trap/master/assets/demo.gif' width='400'>"
+			},
 			{
 				"title": "Installation",
 				"content": "readme/installation.md"
