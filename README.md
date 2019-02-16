@@ -1,4 +1,5 @@
 <h1 align="center">@appnest/focus-trap</h1>
+
 <p align="center">
 		<a href="https://npmcharts.com/compare/@appnest/focus-trap?minimal=true"><img alt="Downloads per month" src="https://img.shields.io/npm/dm/@appnest/focus-trap.svg" height="20"/></a>
 <a href="https://www.npmjs.com/package/@appnest/focus-trap"><img alt="NPM Version" src="https://img.shields.io/npm/v/@appnest/focus-trap.svg" height="20"/></a>
@@ -6,17 +7,23 @@
 <a href="https://github.com/andreasbm/focus-trap/graphs/contributors"><img alt="Contributors" src="https://img.shields.io/github/contributors/andreasbm/focus-trap.svg" height="20"/></a>
 <a href="https://www.webcomponents.org/element/@appnest/focus-trap"><img alt="Published on webcomponents.org" src="https://img.shields.io/badge/webcomponents.org-published-blue.svg" height="20"/></a>
 	</p>
+
+
 <p align="center">
   <b>A lightweight web component to trap focus within a DOM node</b></br>
   <sub>A focus trap ensures that <code>tab</code> and <code>shift + tab</code> keys will cycle through the focus trap's tabbable elements but not leave the focus trap. This is great for making <a href='https://www.w3.org/TR/wai-aria-practices/examples/dialog-modal/dialog.html'>accessible modals</a>. Go here to see a demo <a href="https://appnest-demo.firebaseapp.com/focus-trap/">https://appnest-demo.firebaseapp.com/focus-trap/</a>.<sub>
 </p>
 
 <br />
+
+
 * Does one things very very well - it traps the focus!
 * Pierces through the shadow roots when looking for focusable elements.
 * Works right out of the box (just add it to your markup)
 * Created using only vanilla js - no dependencies and framework agnostic!
+
 <img src='https://raw.githubusercontent.com/andreasbm/focus-trap/master/assets/demo.gif' width='400'>
+
 ![line](https://raw.githubusercontent.com/andreasbm/readme/master/assets/line.png)
 
 ## ❯ Installation
@@ -24,6 +31,7 @@
 ```javascript
 npm i @appnest/focus-trap
 ```
+
 
 ![line](https://raw.githubusercontent.com/andreasbm/readme/master/assets/line.png)
 
@@ -40,6 +48,7 @@ Import `@appnest/focus-trap` somewhere in your code and you're ready to go! Simp
   <button>Focus 5</button>
 </focus-trap>
 ```
+
 
 ![line](https://raw.githubusercontent.com/andreasbm/readme/master/assets/line.png)
 
@@ -65,6 +74,7 @@ interface IFocusTrap {
   getFocusableChildren: (() => HTMLElement[]);
 }
 ```
+
 
 ![line](https://raw.githubusercontent.com/andreasbm/readme/master/assets/line.png)
 
