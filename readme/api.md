@@ -1,3 +1,5 @@
+## API
+
 The `focus-trap` element implements the following interface.
 
 ```typescript

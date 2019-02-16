@@ -1,3 +1,5 @@
+## Usage
+
 Import `@appnest/focus-trap` somewhere in your code and you're ready to go! Simply add the focus trap to your `html` and it'll be working without any more effort from your part.
 
 ```html
