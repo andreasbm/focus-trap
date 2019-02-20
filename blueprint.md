@@ -4,7 +4,7 @@
 
 {{ template:description }}
 
-{{ template:bullets }}
+{{ readme.bullets }}
 
 <img src='https://raw.githubusercontent.com/andreasbm/focus-trap/master/assets/demo.gif' width='400'>
 

@@ -24,18 +24,20 @@
 
 <img src='https://raw.githubusercontent.com/andreasbm/focus-trap/master/assets/demo.gif' width='400'>
 
-![line](https://raw.githubusercontent.com/andreasbm/readme/master/assets/line.png)
 
-## ❯ Installation
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
+
+## ➤ Installation
 
 ```javascript
 npm i @appnest/focus-trap
 ```
 
 
-![line](https://raw.githubusercontent.com/andreasbm/readme/master/assets/line.png)
 
-## ❯ Usage
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
+
+## ➤ Usage
 
 Import `@appnest/focus-trap` somewhere in your code and you're ready to go! Simply add the focus trap to your `html` and it'll be working without any more effort from your part.
 
@@ -50,9 +52,10 @@ Import `@appnest/focus-trap` somewhere in your code and you're ready to go! Simp
 ```
 
 
-![line](https://raw.githubusercontent.com/andreasbm/readme/master/assets/line.png)
 
-## ❯ API
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
+
+## ➤ API
 
 The `focus-trap` element implements the following interface.
 
@@ -76,8 +79,9 @@ interface IFocusTrap {
 ```
 
 
-![line](https://raw.githubusercontent.com/andreasbm/readme/master/assets/line.png)
 
-## ❯ License
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
+
+## ➤ License
 	
 Licensed under [MIT](https://opensource.org/licenses/MIT).
