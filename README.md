@@ -17,12 +17,14 @@
 <br />
 
 
+<p align="center">
+	<img src='https://raw.githubusercontent.com/andreasbm/focus-trap/master/assets/demo.gif' width='400'>
+</p>
+
 * Does one things very very well - it traps the focus!
 * Pierces through the shadow roots when looking for focusable elements.
 * Works right out of the box (just add it to your markup)
 * Created using only vanilla js - no dependencies and framework agnostic!
-
-<img src='https://raw.githubusercontent.com/andreasbm/focus-trap/master/assets/demo.gif' width='400'>
 
 
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)

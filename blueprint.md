@@ -4,9 +4,11 @@
 
 {{ template:description }}
 
-{{ readme.bullets }}
+<p align="center">
+	<img src='https://raw.githubusercontent.com/andreasbm/focus-trap/master/assets/demo.gif' width='400'>
+</p>
 
-<img src='https://raw.githubusercontent.com/andreasbm/focus-trap/master/assets/demo.gif' width='400'>
+{{ readme.bullets }}
 
 {{ load:readme/installation.md }}
 
