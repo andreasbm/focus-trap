@@ -154,23 +154,24 @@ export class FocusTrap extends HTMLElement implements IFocusTrap {
 	 * When the element gains focus this function is called.
 	 */
 	private onFocusIn () {
-		this.updateHasFocus(true);
+		this.updateFocused(true);
 	}
 
 	/**
 	 * When the element looses its focus this function is called.
 	 */
 	private onFocusOut () {
-		this.updateHasFocus(false);
+		this.updateFocused(false);
 	}
 
 	/**
-	 * Updates the has focus property and updates the view.
-	 * The update is debounces because the focusin and focusout out
-	 * might fire multiple times in a row.
+	 * Updates the focused property and updates the view.
+	 * The update is debounced because the focusin and focusout out
+	 * might fire multiple times in a row. We only want to render
+	 * the component once, therefore waiting until the focus is "stable".
 	 * @param value
 	 */
-	private updateHasFocus (value: boolean) {
+	private updateFocused (value: boolean) {
 		debounce(() => {
 			if (this.focused !== value) {
 				this._focused = value;

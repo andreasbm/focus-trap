@@ -8,7 +8,7 @@
 	<img src='https://raw.githubusercontent.com/andreasbm/focus-trap/master/assets/demo.gif' width='400'>
 </p>
 
-{{ readme.bullets }}
+{{ bullets }}
 
 {{ load:readme/installation.md }}
 

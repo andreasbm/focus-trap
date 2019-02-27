@@ -1,0 +1,16 @@
+{
+	"line": "rainbow",
+	"text": "A focus trap ensures that <code>tab</code> and <code>shift + tab</code> keys will cycle through the focus trap's tabbable elements but not leave the focus trap. This is great for making <a href='https://www.w3.org/TR/wai-aria-practices/examples/dialog-modal/dialog.html'>accessible modals</a>.",
+	"demo": "https://appnest-demo.firebaseapp.com/focus-trap/",
+	"ids": {
+		"npm": "@appnest/focus-trap",
+		"github": "andreasbm/focus-trap",
+		"webcomponents": "@appnest/focus-trap"
+	},
+	"bullets": [
+		"Does one things very very well - it traps the focus!",
+		"Pierces through the shadow roots when looking for focusable elements.",
+		"Works right out of the box (just add it to your markup)",
+		"Created using only vanilla js - no dependencies and framework agnostic!"
+	]
+}
