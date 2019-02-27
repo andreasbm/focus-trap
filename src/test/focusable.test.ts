@@ -15,6 +15,7 @@ const testElements: {tag: string, focusable: boolean, attributes?: {[key: string
 	{tag: "div", focusable: false, attributes: {tabindex: "0", style: "display: none"}},
 	{tag: "div", focusable: false, attributes: {tabindex: "0", style: "visibility: hidden"}},
 	{tag: "div", focusable: false, attributes: {tabindex: "0", style: "visibility: collapse"}},
+	{tag: "div", focusable: false, attributes: {tabindex: "0", style: "opacity: 0"}},
 
 	// Links
 	{tag: "a", focusable: true, attributes: {href: "#"}},

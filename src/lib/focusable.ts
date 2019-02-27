@@ -5,11 +5,13 @@
 export function isHidden ($elem: HTMLElement): boolean {
 	return $elem.hasAttribute("hidden")
 		|| ($elem.hasAttribute("aria-hidden") && $elem.getAttribute("aria-hidden") !== "false")
-		// TODO: Figure out how to get the values below without window.getComputedStyle (bad performance).
-		// Currently we only know if the element is hidden if it's set directly on the element.
-		// This might lead to unexpected behavior if the first or last element is hidden through the stylesheet.
-		// Add a test case for this.
+
+		// A quick and dirty way to check whether the element is hidden.
+		// For a more fine-grained check we could use "window.getComputedStyle" but we don't because of bad performance.
+		// If the element has visibility set to "hidden" or "collapse", display set to "none" or opacity set to "0" through CSS
+		// we won't be able to catch it here. We accept it due to the huge performance benefits.
 		|| $elem.style.display === `none`
+		|| $elem.style.opacity === `0`
 		|| $elem.style.visibility === `hidden`
 		|| $elem.style.visibility === `collapse`;
 }
