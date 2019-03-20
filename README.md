@@ -76,7 +76,7 @@ interface IFocusTrap {
   focusLastElement: (() => void);
 
   // Returns a list of the focusable children found within the element.
-  getFocusableChildren: (() => HTMLElement[]);
+  getFocusableElements: (() => HTMLElement[]);
 }
 ```
 

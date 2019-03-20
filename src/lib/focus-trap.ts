@@ -15,7 +15,7 @@ export interface IFocusTrap {
 	readonly focused: boolean;
 	focusFirstElement: (() => void);
 	focusLastElement: (() => void);
-	getFocusableChildren: (() => HTMLElement[]);
+	getFocusableElements: (() => HTMLElement[]);
 }
 
 export class FocusTrap extends HTMLElement implements IFocusTrap {
@@ -118,7 +118,7 @@ export class FocusTrap extends HTMLElement implements IFocusTrap {
 	/**
 	 * Returns a list of the focusable children found within the element.
 	 */
-	getFocusableChildren (): HTMLElement[] {
+	getFocusableElements (): HTMLElement[] {
 		return queryShadowRoot(this, isHidden, isFocusable);
 	}
 
@@ -129,7 +129,7 @@ export class FocusTrap extends HTMLElement implements IFocusTrap {
 	protected trapFocus (trapToEnd?: boolean) {
 		if (this.inactive) return;
 
-		let focusableChildren = this.getFocusableChildren();
+		let focusableChildren = this.getFocusableElements();
 		if (focusableChildren.length > 0) {
 			if (trapToEnd) {
 				focusableChildren[focusableChildren.length - 1].focus();
