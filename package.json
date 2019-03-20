@@ -1,6 +1,6 @@
 {
 	"name": "@appnest/focus-trap",
-	"version": "0.0.27",
+	"version": "1.0.0",
 	"license": "MIT",
 	"module": "index.js",
 	"author": "Appnest",
