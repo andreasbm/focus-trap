@@ -18,6 +18,11 @@ export interface IFocusTrap {
 	getFocusableElements: (() => HTMLElement[]);
 }
 
+/**
+ * Focus trap web component.
+ * @slot - Default content.
+ * @attr {Boolean} inactive - Determines whether the focus trap is active or not.
+ */
 export class FocusTrap extends HTMLElement implements IFocusTrap {
 
 	// Whenever one of these attributes changes we need to render the template again.

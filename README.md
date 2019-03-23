@@ -1,11 +1,11 @@
-<h1 align="center">@appnest/focus-trap</h1>
+<h1 align="center">@a11y/focus-trap</h1>
 
 <p align="center">
-		<a href="https://npmcharts.com/compare/@appnest/focus-trap?minimal=true"><img alt="Downloads per month" src="https://img.shields.io/npm/dm/@appnest/focus-trap.svg" height="20"/></a>
-<a href="https://www.npmjs.com/package/@appnest/focus-trap"><img alt="NPM Version" src="https://img.shields.io/npm/v/@appnest/focus-trap.svg" height="20"/></a>
+		<a href="https://npmcharts.com/compare/@a11y/focus-trap?minimal=true"><img alt="Downloads per month" src="https://img.shields.io/npm/dm/@a11y/focus-trap.svg" height="20"/></a>
+<a href="https://www.npmjs.com/package/@a11y/focus-trap"><img alt="NPM Version" src="https://img.shields.io/npm/v/@a11y/focus-trap.svg" height="20"/></a>
 <a href="https://david-dm.org/andreasbm/focus-trap"><img alt="Dependencies" src="https://img.shields.io/david/andreasbm/focus-trap.svg" height="20"/></a>
 <a href="https://github.com/andreasbm/focus-trap/graphs/contributors"><img alt="Contributors" src="https://img.shields.io/github/contributors/andreasbm/focus-trap.svg" height="20"/></a>
-<a href="https://www.webcomponents.org/element/@appnest/focus-trap"><img alt="Published on webcomponents.org" src="https://img.shields.io/badge/webcomponents.org-published-blue.svg" height="20"/></a>
+<a href="https://www.webcomponents.org/element/@a11y/focus-trap"><img alt="Published on webcomponents.org" src="https://img.shields.io/badge/webcomponents.org-published-blue.svg" height="20"/></a>
 	</p>
 
 
@@ -32,7 +32,7 @@
 ## ➤ Installation
 
 ```javascript
-npm i @appnest/focus-trap
+npm i @a11y/focus-trap
 ```
 
 
@@ -41,7 +41,7 @@ npm i @appnest/focus-trap
 
 ## ➤ Usage
 
-Import `@appnest/focus-trap` somewhere in your code and you're ready to go! Simply add the focus trap to your `html` and it'll be working without any more effort from your part.
+Import `@a11y/focus-trap` somewhere in your code and you're ready to go! Simply add the focus trap to your `html` and it'll be working without any more effort from your part.
 
 ```html
 <focus-trap>
