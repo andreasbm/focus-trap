@@ -3,7 +3,7 @@
 	"version": "1.0.0",
 	"license": "MIT",
 	"module": "index.js",
-	"author": "Appnest",
+	"author": "Andreas Mehlsen",
 	"description": "A lightweight web component to trap focus within a DOM node",
 	"bugs": {
 		"url": "https://github.com/andreasbm/focus-trap/issues"
