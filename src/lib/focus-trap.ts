@@ -2,14 +2,6 @@ import { debounce } from "./debounce";
 import { isFocusable, isHidden } from "./focusable";
 import { queryShadowRoot } from "./shadow";
 
-const template = document.createElement("template");
-template.innerHTML = `
-	<div id="start"></div>
-	<slot></slot>
-	<div id="backup"></div>
-	<div id="end"></div>
-`;
-
 export interface IFocusTrap {
 	inactive: boolean;
 	readonly focused: boolean;
@@ -19,9 +11,19 @@ export interface IFocusTrap {
 }
 
 /**
+ * Template for the focus trap.
+ */
+const template = document.createElement("template");
+template.innerHTML = `
+	<div id="start"></div>
+	<slot></slot>
+	<div id="backup"></div>
+	<div id="end"></div>
+`;
+
+/**
  * Focus trap web component.
  * @slot - Default content.
- * @attr {Boolean} inactive - Determines whether the focus trap is active or not.
  */
 export class FocusTrap extends HTMLElement implements IFocusTrap {
 
@@ -32,6 +34,10 @@ export class FocusTrap extends HTMLElement implements IFocusTrap {
 		];
 	}
 
+	/**
+	 * Determines whether the focus trap is active or not.
+	 * @attr
+	 */
 	get inactive () {
 		return this.hasAttribute("inactive");
 	}
@@ -58,6 +64,9 @@ export class FocusTrap extends HTMLElement implements IFocusTrap {
 		return this._focused;
 	}
 
+	/**
+	 * Attaches the shadow root.
+	 */
 	constructor () {
 		super();
 
@@ -71,7 +80,7 @@ export class FocusTrap extends HTMLElement implements IFocusTrap {
 	}
 
 	/**
-	 * Hooks up the component.
+	 * Hooks up the element.
 	 */
 	connectedCallback () {
 		this.$backup = this.shadowRoot!.querySelector<HTMLElement>("#backup")!;
@@ -90,7 +99,7 @@ export class FocusTrap extends HTMLElement implements IFocusTrap {
 
 
 	/**
-	 * Tears down the component.
+	 * Tears down the element.
 	 */
 	disconnectedCallback () {
 		this.$start.removeEventListener("focus", this.focusLastElement);
@@ -173,7 +182,7 @@ export class FocusTrap extends HTMLElement implements IFocusTrap {
 	 * Updates the focused property and updates the view.
 	 * The update is debounced because the focusin and focusout out
 	 * might fire multiple times in a row. We only want to render
-	 * the component once, therefore waiting until the focus is "stable".
+	 * the element once, therefore waiting until the focus is "stable".
 	 * @param value
 	 */
 	private updateFocused (value: boolean) {

@@ -33,7 +33,9 @@ export function queryShadowRoot (root: ShadowRoot | HTMLElement,
 	};
 
 	// Go through each child and continue the traversing if necessary
-	const children = <HTMLElement[]>Array.from(root.children);
+	// Even though the typing says that children can't be undefined, Edge 15 sometimes gives an undefined value.
+	// Therefore we fallback to an empty array if it is undefined.
+	const children = <HTMLElement[]>Array.from(root.children || []);
 	for (const $child of children) {
 
 		// Check if the node and its descendants should be skipped
