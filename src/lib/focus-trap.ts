@@ -23,6 +23,7 @@ template.innerHTML = `
 
 /**
  * Focus trap web component.
+ * @customElement focus-trap
  * @slot - Default content.
  */
 export class FocusTrap extends HTMLElement implements IFocusTrap {

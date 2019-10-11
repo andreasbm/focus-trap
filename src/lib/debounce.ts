@@ -1,4 +1,4 @@
-let timeouts = new Map<string, number>();
+const timeouts = new Map<string, number>();
 
 /**
  * Debounces a callback.
