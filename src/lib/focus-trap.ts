@@ -16,8 +16,8 @@ export interface IFocusTrap {
 const template = document.createElement("template");
 template.innerHTML = `
 	<div id="start"></div>
-	<slot></slot>
 	<div id="backup"></div>
+	<slot></slot>
 	<div id="end"></div>
 `;
 
@@ -74,6 +74,10 @@ export class FocusTrap extends HTMLElement implements IFocusTrap {
 		const shadow = this.attachShadow({mode: "open"});
 		shadow.appendChild(template.content.cloneNode(true));
 
+		this.$backup = shadow.querySelector<HTMLElement>("#backup")!;
+		this.$start = shadow.querySelector<HTMLElement>("#start")!;
+		this.$end = shadow.querySelector<HTMLElement>("#end")!;
+
 		this.focusLastElement = this.focusLastElement.bind(this);
 		this.focusFirstElement = this.focusFirstElement.bind(this);
 		this.onFocusIn = this.onFocusIn.bind(this);
@@ -84,10 +88,6 @@ export class FocusTrap extends HTMLElement implements IFocusTrap {
 	 * Hooks up the element.
 	 */
 	connectedCallback () {
-		this.$backup = this.shadowRoot!.querySelector<HTMLElement>("#backup")!;
-		this.$start = this.shadowRoot!.querySelector<HTMLElement>("#start")!;
-		this.$end = this.shadowRoot!.querySelector<HTMLElement>("#end")!;
-
 		this.$start.addEventListener("focus", this.focusLastElement);
 		this.$end.addEventListener("focus", this.focusFirstElement);
 
@@ -199,7 +199,6 @@ export class FocusTrap extends HTMLElement implements IFocusTrap {
 	 * Updates the template.
 	 */
 	protected render () {
-		if (!this.isConnected) return;
 		this.$start.setAttribute("tabindex", !this.focused || this.inactive ? `-1` : `0`);
 		this.$end.setAttribute("tabindex", !this.focused || this.inactive ? `-1` : `0`);
 		this.focused ? this.setAttribute("focused", "") : this.removeAttribute("focused");
