@@ -10,7 +10,7 @@
 
 
 <p align="center">
-  <b>A lightweight web component to trap focus within a DOM node</b></br>
+  <b>A lightweight web component that traps focus within a DOM node</b></br>
   <sub>A focus trap ensures that <code>tab</code> and <code>shift + tab</code> keys will cycle through the focus trap's tabbable elements but not leave the focus trap. This is great for making <a href='https://www.w3.org/TR/wai-aria-practices/examples/dialog-modal/dialog.html'>accessible modals</a>. Go here to see a demo <a href="https://appnest-demo.firebaseapp.com/focus-trap/">https://appnest-demo.firebaseapp.com/focus-trap/</a>.<sub>
 </p>
 
