@@ -13,11 +13,11 @@ export function isHidden ($elem: HTMLElement): boolean {
 		|| $elem.style.display === `none`
 		|| $elem.style.opacity === `0`
 		|| $elem.style.visibility === `hidden`
-		|| $elem.style.visibility === `collapse`
+		|| $elem.style.visibility === `collapse`;
 
 		// If offsetParent is null we can assume that the element is hidden
 		// https://stackoverflow.com/questions/306305/what-would-make-offsetparent-null
-		|| $elem.offsetParent == null;
+		//|| $elem.offsetParent == null;
 }
 
 /**
