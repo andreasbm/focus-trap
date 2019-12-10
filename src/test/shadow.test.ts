@@ -11,11 +11,11 @@ rootTemplate.innerHTML = `
 				<element-with-focusable-children id="3">
 					<element-with-focusable-children id="4">
 						<element-with-focusable-children id="5">
-							<a href="#" id="6">I am the center of the world!</a>
+							<a href="#" id="6">Focusable</a>
 						</element-with-focusable-children>
 					</element-with-focusable-children>
 					<element-with-focusable-children id="7">
-						<a href="#" id="8">I am the center of the world!</a>
+						<a href="#" id="8">Focusble</a>
 					</element-with-focusable-children>
 				</element-with-focusable-children>
 			</element-with-focusable-children>
@@ -25,34 +25,34 @@ rootTemplate.innerHTML = `
 				<element-with-focusable-children id="11">
 					<element-with-focusable-children id="12" aria-hidden="false">
 						<element-with-focusable-children id="13">
-							<a id="14" href="#">I am the center of the world!</a>
+							<a id="14" href="#">Focusable</a>
 						</element-with-focusable-children>
 					</element-with-focusable-children>
 					
 					<!-- Ignore -->
 					<element-with-focusable-children hidden id="15">
 						<element-with-focusable-children id="16">
-							<a id="17" href="#">I am the center of the world!</a>
+							<a id="17" href="#">Hidden</a>
 						</element-with-focusable-children>
 					</element-with-focusable-children>
 					<element-with-focusable-children aria-hidden id="18">
 						<element-with-focusable-children id="19">
-							<a id="20" href="#">I am the center of the world!</a>
+							<a id="20" href="#">Hidden</a>
 						</element-with-focusable-children>
 					</element-with-focusable-children>
 					<element-with-focusable-children style="display: none" id="18">
 						<element-with-focusable-children id="19">
-							<a id="20" href="#">I am the center of the world!</a>
+							<a id="20" href="#">Hidden</a>
 						</element-with-focusable-children>
 					</element-with-focusable-children>
 					<element-with-focusable-children style="visibility: hidden" id="18">
 						<element-with-focusable-children id="19">
-							<a id="20" href="#">I am the center of the world!</a>
+							<a id="20" href="#">Hidden</a>
 						</element-with-focusable-children>
 					</element-with-focusable-children>
 					<element-with-focusable-children style="visibility: collapse" id="18">
 						<element-with-focusable-children id="19">
-							<a id="20" href="#">I am the center of the world!</a>
+							<a id="20" href="#">Hidden</a>
 						</element-with-focusable-children>
 					</element-with-focusable-children>
 				</element-with-focusable-children>
@@ -125,7 +125,7 @@ describe("shadow", () => {
 	});
 
 	it("[shadow] - should traverse nested shadow roots and find all focusable children", async () => {
-		// console.log($root.$focusTrap.getFocusableElements());
+		console.log($root.$focusTrap.getFocusableElements());
 		expect($root.$focusTrap.getFocusableElements().length).to.be.equal((ELEMENT_WITH_FOCUSABLE_CHILDREN_COUNT * FOCUSABLE_CHILDREN_PER_ELEMENT_WITH_FOCUSABLE_CHILDREN) + FOCUSABLE_LEAF_NODE_COUNT);
 	});
 });

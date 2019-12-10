@@ -144,12 +144,12 @@ export class FocusTrap extends HTMLElement implements IFocusTrap {
 	protected trapFocus (trapToEnd?: boolean) {
 		if (this.inactive) return;
 
-		let focusableChildren = this.getFocusableElements();
-		if (focusableChildren.length > 0) {
+		let focusableElements = this.getFocusableElements();
+		if (focusableElements.length > 0) {
 			if (trapToEnd) {
-				focusableChildren[focusableChildren.length - 1].focus();
+				focusableElements[focusableElements.length - 1].focus();
 			} else {
-				focusableChildren[0].focus();
+				focusableElements[0].focus();
 			}
 
 			this.$backup.setAttribute("tabindex", "-1");
@@ -163,7 +163,6 @@ export class FocusTrap extends HTMLElement implements IFocusTrap {
 			this.$backup.focus();
 		}
 	}
-
 
 	/**
 	 * When the element gains focus this function is called.
