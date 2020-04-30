@@ -205,4 +205,4 @@ export class FocusTrap extends HTMLElement implements IFocusTrap {
 	}
 }
 
-window.customElements.define("focus-trap", FocusTrap);
+if (!window.customElements.get('focus-trap')) customElements.define('focus-trap', FocusTrap);
